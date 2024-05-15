@@ -1,0 +1,205 @@
+@extends('layouts.admin')
+
+@section('main-content')
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Profile') }}</h1>
+
+    @if (session('success'))
+        <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger border-left-danger" role="alert">
+            <ul class="pl-4 my-2">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <div class="row">
+        <!-- Botones de acciones CRUD -->
+        <div class="col-lg-12 mb-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#createModal">{{ __('Crear') }}</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#updateModal">{{ __('Actualizar') }}</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal"
+                    data-target="#deleteModal">{{ __('Eliminar') }}</button>
+            <button type="button" class="btn btn-info" data-toggle="modal"
+                    data-target="#readModal">{{ __('Leer') }}</button>
+        </div>
+    </div>
+
+    <!-- Modales para CRUD -->
+    <!-- Modal de Creación -->
+    <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel">Crear Persona</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí va el formulario de creación -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mostrar modal de actualización -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Actualizar Persona</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí va el formulario de actualización -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mostrar modal de eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Eliminar Persona</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí va el formulario de eliminación -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mostrar modal de lectura -->
+    <div class="modal fade" id="readModal" tabindex="-1" aria-labelledby="readModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="readModalLabel">Detalles de Persona</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí va el contenido para mostrar la información de la persona -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar modal de actualización
+        $('#updateModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Actualizar Persona');
+            // Agregar contenido del formulario de actualización al modal body
+            modal.find('.modal-body').html(`
+            <!-- Aquí va el formulario de actualización -->
+        `);
+        });
+
+        // Mostrar modal de eliminación
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Eliminar Persona');
+            // Agregar contenido del formulario de eliminación al modal body
+            modal.find('.modal-body').html(`
+            <!-- Aquí va el formulario de eliminación -->
+        `);
+        });
+
+        // Mostrar modal de lectura
+        $('#readModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Leer Persona');
+            // Agregar contenido del formulario de lectura al modal body
+            modal.find('.modal-body').html(`
+            <!-- Aquí va el contenido para mostrar la información de la persona -->
+        `);
+        });
+    </script>
+
+    <!-- Script para mostrar los modales -->
+    <script>
+        // Mostrar modal de creación
+        $('#createModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Crear Persona');
+            // Agregar contenido del formulario de creación al modal body
+            modal.find('.modal-body').html(`
+                <!-- Aquí va el formulario de creación -->
+            `);
+        });
+
+        / Mostrar modal de actualización
+        $('#updateModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Actualizar Persona');
+            // Agregar contenido del formulario de actualización al modal body
+            modal.find('.modal-body').html(`
+            <!-- Aquí va el formulario de actualización -->
+        `);
+        });
+
+        // Mostrar modal de eliminación
+        $('#deleteModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Eliminar Persona');
+            // Agregar contenido del formulario de eliminación al modal body
+            modal.find('.modal-body').html(`
+            <!-- Aquí va el formulario de eliminación -->
+        `);
+        });
+
+        // Mostrar modal de lectura
+        $('#readModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Botón que activó el modal
+            var modal = $(this);
+            modal.find('.modal-title').text('Leer Persona');
+            // Agregar contenido del formulario de lectura al modal body
+            modal.find('.modal-body').html(`
+            <!-- Aquí va el contenido para mostrar la información de la persona -->
+        `);
+        });
+    </script>
+@endsection
