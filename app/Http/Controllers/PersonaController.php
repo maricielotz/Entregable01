@@ -48,26 +48,6 @@ class PersonaController extends Controller
         return view('personas.edit', compact('persona'));
     }
 
-    /**public function update(Request $request, Persona $persona)
-    {
-        $request->validate([
-            'dni' => 'required|string|max:8|unique:personas,dni,' . $persona->dni,
-            'estado' => 'required|boolean',
-            'ruc' => 'nullable|string|max:11|unique:personas,ruc,' . $persona->dni,
-            'apellido_paterno' => 'required|string|max:50',
-            'apellido_materno' => 'required|string|max:50',
-            'nombres' => 'required|string|max:50',
-            'edad' => 'required|integer',
-            'sexo' => 'required|string|max:1',
-            'foto' => 'nullable|string|max:255',
-            'email' => 'required|string|email|max:100|unique:personas,email,' . $persona->dni,
-        ]);
-
-        $persona->update($request->all());
-
-        return redirect()->route('personas.index')->with('success', 'Persona actualizada exitosamente.');
-    }*/
-
     public function update(Request $request, Persona $persona)
     {
         // Validar la entrada

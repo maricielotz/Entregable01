@@ -14,10 +14,13 @@ class Docente extends Model
 
     public $incrementing = false;
 
-    protected $fillable = ['persona_dni', /* other fillable fields */];
+    protected $fillable = [
+        'persona_dni',
+        'estado',
+    ];
 
     public function persona()
     {
-        return $this->belongsTo(Persona::class, 'dni', 'persona_dni');
+        return $this->belongsTo(Persona::class, 'persona_dni', 'dni');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Persona;
+use App\Models\Docente;
 
 class DocenteController extends Controller
 {
@@ -21,9 +23,8 @@ class DocenteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'persona_dni' => 'required|exists:personas,dni',
-            'codigo' => 'required|string|max:10|unique:docentes',
-            'fecha_contratacion' => 'required|date',
+            'persona_dni' => 'required|string|max:8|exists:personas,dni',
+            'estado' => 'required|boolean',
         ]);
 
         Docente::create($request->all());
@@ -36,23 +37,30 @@ class DocenteController extends Controller
         return view('docentes.show', compact('docente'));
     }
 
-    public function edit(Docente $docente)
+    //public function edit(Docente $docente)
+    //{
+    //    $personas = Persona::all();
+    //    return view('docentes.edit', compact('docente', 'personas'));
+    //}
+
+    public function edit($id)
     {
+        $docente = Docente::findOrFail($id);
         $personas = Persona::all();
         return view('docentes.edit', compact('docente', 'personas'));
     }
 
-    public function update(Request $request, Docente $docente)
+    public function update(Request $request, $id)
     {
+        $docente = Docente::findOrFail($id);
         $request->validate([
-            'persona_dni' => 'required|exists:personas,dni',
-            'codigo' => 'required|string|max:10|unique:docentes,codigo,' . $docente->id,
-            'fecha_contratacion' => 'required|date',
+            'persona_dni' => 'required|string|max:8|exists:personas,dni',
+            'estado' => 'required|boolean',
         ]);
 
         $docente->update($request->all());
 
-        return redirect()->route('docentes.index')->with('success', 'Docente actualizado exitosamente.');
+        return redirect()->route('docentes.index')->with('success', 'Docente actualizado correctamente.');
     }
 
     public function destroy(Docente $docente)
