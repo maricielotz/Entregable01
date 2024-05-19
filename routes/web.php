@@ -42,6 +42,15 @@ Route::get('/personas/{persona}/edit', [PersonaController::class, 'edit'])->name
 Route::put('/personas/{persona}', [PersonaController::class, 'update'])->name('personas.update');
 Route::delete('/personas/{persona}', [PersonaController::class, 'destroy'])->name('personas.destroy');
 
+//Rutas para Estudiante
+Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
+Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
+Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
+Route::get('/estudiantes/{estudiante}', [EstudianteController::class, 'show'])->name('estudiantes.show');
+Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit'])->name('estudiantes.edit');
+Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
+Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
+
 // Rutas para Docente
 Route::get('/docentes', [DocenteController::class, 'index'])->name('docentes.index');
 Route::get('/docentes/create', [DocenteController::class, 'create'])->name('docentes.create');
