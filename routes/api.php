@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\EstudianteController;
-use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ReservacionesController;
+use App\Http\Controllers\PromocionesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->group(function () {
-    Route::apiResource('personas', PersonaController::class);
-    Route::apiResource('estudiantes', EstudianteController::class);
-    Route::apiResource('docentes', DocenteController::class);
+    Route::apiResource('clientes', ClienteController::class);
+    Route::apiResource('reservaciones', ReservacionesController::class);
+    Route::apiResource('promociones', PromocionesController::class);
 });

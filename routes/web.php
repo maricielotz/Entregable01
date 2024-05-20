@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PersonaController;
-use App\Http\Controllers\EstudianteController;
-use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PromocionesController;
+use App\Http\Controllers\ReservacionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,30 +32,30 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-// Rutas para Persona
+// Rutas para 
 //Route::resource('personas', PersonaController::class);
-Route::get('/personas', [PersonaController::class, 'index'])->name('personas.index');
-Route::get('/personas/create', [PersonaController::class, 'create'])->name('personas.create');
-Route::post('/personas', [PersonaController::class, 'store'])->name('personas.store');
-Route::get('/personas/{persona}', [PersonaController::class, 'show'])->name('personas.show');
-Route::get('/personas/{persona}/edit', [PersonaController::class, 'edit'])->name('personas.edit');
-Route::put('/personas/{persona}', [PersonaController::class, 'update'])->name('personas.update');
-Route::delete('/personas/{persona}', [PersonaController::class, 'destroy'])->name('personas.destroy');
+Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.index');
+Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
+Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+Route::get('/clientes/{cliente}', [ClienteController::class, 'show'])->name('clientes.show');
+Route::get('/clientes/{cliente}/edit', [ClienteController::class, 'edit'])->name('clientes.edit');
+Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
+Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
-//Rutas para Estudiante
-Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
-Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
-Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
-Route::get('/estudiantes/{estudiante}', [EstudianteController::class, 'show'])->name('estudiantes.show');
-Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit'])->name('estudiantes.edit');
-Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
-Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
+//Rutas para Reservacion
+Route::get('/reservaciones', [ReservacionesController::class, 'index'])->name('reservaciones.index');
+Route::get('/reservaciones/create', [ReservacionesController::class, 'create'])->name('reservaciones.create');
+Route::post('/reservaciones', [ReservacionesController::class, 'store'])->name('reservaciones.store');
+Route::get('/reservaciones/{reservacion}', [ReservacionesController::class, 'show'])->name('reservaciones.show');
+Route::get('/reservaciones/{reservacion}/edit', [ReservacionesController::class, 'edit'])->name('reservaciones.edit');
+Route::put('/reservaciones/{reservacion}', [ReservacionesController::class, 'update'])->name('reservaciones.update');
+Route::delete('/reservaciones/{reservacion}', [ReservacionesController::class, 'destroy'])->name('reservaciones.destroy');
 
-// Rutas para Docente
-Route::get('/docentes', [DocenteController::class, 'index'])->name('docentes.index');
-Route::get('/docentes/create', [DocenteController::class, 'create'])->name('docentes.create');
-Route::post('/docentes', [DocenteController::class, 'store'])->name('docentes.store');
-Route::get('/docentes/{docente}', [DocenteController::class, 'show'])->name('docentes.show');
-Route::get('/docentes/{docente}/edit', [DocenteController::class, 'edit'])->name('docentes.edit');
-Route::put('/docentes/{docente}', [DocenteController::class, 'update'])->name('docentes.update');
-Route::delete('/docentes/{docente}', [DocenteController::class, 'destroy'])->name('docentes.destroy');
+// Rutas para Promocion
+Route::get('/promociones', [PromocionesController::class, 'index'])->name('promociones.index');
+Route::get('/promociones/create', [PromocionesController::class, 'create'])->name('promociones.create');
+Route::post('/promociones', [PromocionesController::class, 'store'])->name('promociones.store');
+Route::get('/promociones/{promocion}', [PromocionesController::class, 'show'])->name('promociones.show');
+Route::get('/promociones/{promocion}/edit', [PromocionesController::class, 'edit'])->name('promociones.edit');
+Route::put('/promociones/{promocion}', [PromocionesController::class, 'update'])->name('promociones.update');
+Route::delete('/promociones/{promocion}', [PromocionesController::class, 'destroy'])->name('promociones.destroy');

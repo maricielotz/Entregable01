@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Model
+class Cliente extends Model
 {
     use HasFactory;
     protected $primaryKey = 'dni'; // Definimos la clave primaria personalizada
@@ -13,27 +13,23 @@ class Persona extends Model
     public $incrementing = false; // Indicamos que la clave primaria no es autoincremental
     protected $fillable = [ // Definimos los campos que pueden ser asignados masivamente
         'dni',
-        'estado',
-        'ruc',
+        'nombres',
         'apellido_paterno',
         'apellido_materno',
-        'nombres',
-        'edad',
-        'sexo',
-        'foto',
-        'email',
+        'direccion',
+        'ciudad',
     ];
 
     // Definimos las relaciones con otras tablas
 
-    public function estudiante()
+    public function reservacion()
     {
-        return $this->hasOne(Estudiante::class, 'persona_dni', 'dni');
+        return $this->hasOne(Reservaciones::class, 'cliente_dni', 'dni');
     }
 
-    public function docente()
+    public function promocion()
     {
-        return $this->hasOne(Docente::class, 'persona_dni', 'dni');
+        return $this->hasOne(Promociones::class, 'nro_promocion', 'cliente_dni');
     }
 
     //public function usuario()

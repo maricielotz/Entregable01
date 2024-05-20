@@ -58,26 +58,26 @@
         </div>
 
         <!-- Nav Item - Personas -->
-        <li class="nav-item {{ Nav::isRoute('personas.index') }}">
-            <a class="nav-link" href="{{ route('personas.index') }}">
+        <li class="nav-item {{ Nav::isRoute('clientes.index') }}">
+            <a class="nav-link" href="{{ route('clientes.index') }}">
                 <i class="fas fa-fw fa-users"></i>
-                <span>{{ __('Personas') }}</span>
+                <span>{{ __('Clientes') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - Estudiantes -->
-        <li class="nav-item {{ Nav::isRoute('estudiantes.index') }}">
-            <a class="nav-link" href="{{ route('estudiantes.index') }}">
+        <li class="nav-item {{ Nav::isRoute('reservaciones.index') }}">
+            <a class="nav-link" href="{{ route('reservaciones.index') }}">
                 <i class="fas fa-fw fa-user-graduate"></i>
-                <span>{{ __('Estudiantes') }}</span>
+                <span>{{ __('Reservaciones') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - Docentes -->
-        <li class="nav-item {{ Nav::isRoute('docentes.index') }}">
-            <a class="nav-link" href="{{ route('docentes.index') }}">
+        <li class="nav-item {{ Nav::isRoute('promociones.index') }}">
+            <a class="nav-link" href="{{ route('promociones.index') }}">
                 <i class="fas fa-fw fa-chalkboard-teacher"></i>
-                <span>{{ __('Docentes') }}</span>
+                <span>{{ __('Promociones') }}</span>
             </a>
         </li>
 

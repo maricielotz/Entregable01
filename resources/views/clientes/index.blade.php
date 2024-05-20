@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Personas') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Clientes') }}</h1>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -12,7 +12,7 @@
 
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="{{ route('personas.create') }}" class="btn btn-primary">{{ __('Agregar Persona') }}</a>
+                <a href="{{ route('clientes.create') }}" class="btn btn-primary">{{ __('Agregar Cliente') }}</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -23,28 +23,24 @@
                             <th>Nombres</th>
                             <th>Apellido Paterno</th>
                             <th>Apellido Materno</th>
-                            <th>RUC</th>
-                            <th>Estado</th>
-                            <th>Sexo</th>
-                            <th>E-Mail</th>
+                            <th>Direccion</th>
+                            <th>Ciudad</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($personas as $persona)
+                        @foreach ($clientes as $cliente)
                             <tr>
-                                <td>{{ $persona->dni }}</td>
-                                <td>{{ $persona->nombres }}</td>
-                                <td>{{ $persona->apellido_paterno }}</td>
-                                <td>{{ $persona->apellido_materno }}</td>
-                                <td>{{ $persona->ruc }}</td>
-                                <td>{{ $persona->estado }}</td>
-                                <td>{{ $persona->sexo }}</td>
-                                <td>{{ $persona->email }}</td>
+                                <td>{{ $cliente->dni }}</td>
+                                <td>{{ $cliente->nombres }}</td>
+                                <td>{{ $cliente->apellido_paterno }}</td>
+                                <td>{{ $cliente->apellido_materno }}</td>
+                                <td>{{ $cliente->direccion }}</td>
+                                <td>{{ $cliente->ciudad }}</td>
                                 <td>
-                                    <a href="{{ route('personas.show', $persona) }}" class="btn btn-info btn-sm">{{ __('Ver') }}</a>
-                                    <a href="{{ route('personas.edit', $persona) }}" class="btn btn-warning btn-sm">{{ __('Editar') }}</a>
-                                    <form action="{{ route('personas.destroy', $persona) }}" method="POST" style="display:inline;">
+                                    <a href="{{ route('clientes.show', $cliente) }}" class="btn btn-info btn-sm">{{ __('Ver') }}</a>
+                                    <a href="{{ route('clientes.edit', $cliente) }}" class="btn btn-warning btn-sm">{{ __('Editar') }}</a>
+                                    <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">{{ __('Eliminar') }}</button>
